@@ -8,7 +8,7 @@ function Home() {
     const scrollToSection = () => {
         const section = document.getElementById('seccionDestino');
         if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
+          section.scrollIntoView({ behavior: 'instant' });
         }
       };
   return (
@@ -32,10 +32,7 @@ function Home() {
             </div>
           </div>
         </div>
-
-        {/* Sección a la que te deseas desplazar */}
         <div id='seccionDestino' className='seccion'>
-          {/* Contenido de la sección */}
         </div>
       </div>
     </div>
