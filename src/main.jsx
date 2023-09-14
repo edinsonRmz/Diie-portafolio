@@ -1,22 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';'react-router-dom';
-import App from './App';
+import { createRoot } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Suspense } from 'react';
-import {  BrowserRouter as Router, useRoutes,} from 'react-router-dom';
+import App from './App';
 
-import routes from '~react-pages'
+const root = document.getElementById('root');
+const rootElement = createRoot(root);
 
-const App = () => {
-  return (
-    <Suspense fallback={<p>Loading...</p>}>
-      {useRoutes(routes)}
-    </Suspense>
-  )
-}
-
-ReactDOM.render(
+const AppWithRouter = () => (
   <Router>
-    <App />
-  </Router>,
-  document.getElementById('root'),
-)
+    <Suspense fallback={<p>Loading...</p>}>
+      <App />
+    </Suspense>
+  </Router>
+);
+
+rootElement.render(<AppWithRouter />);
