@@ -1,12 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import ReactDOM from 'react-dom';'react-router-dom';
 import App from './App';
+import { Suspense } from 'react';
+import {  BrowserRouter as Router, useRoutes,} from 'react-router-dom';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter basename="/Diie-portafolio">
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+import routes from '~react-pages'
+
+const App = () => {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      {useRoutes(routes)}
+    </Suspense>
+  )
+}
+
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById('root'),
+)
